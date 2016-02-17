@@ -13,6 +13,11 @@ Vagrant.configure(2) do |config|
     m1.vm.hostname = "m1"
     m1.vm.provision :shell, path: "createDB.sh"
     m1.vm.provision :shell, path: "provisionM1.sh"
+    m1.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+      v.cpus = 1
+    end
+
   end  
 
   config.vm.define "m2" do |m2|
@@ -21,6 +26,10 @@ Vagrant.configure(2) do |config|
     m2.vm.hostname ="m2"
     m2.vm.provision :shell, path: "createDB.sh"
     m2.vm.provision :shell, path: "provisionM2.sh"
+    m2.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+      v.cpus = 1
+    end
   end  
 
   

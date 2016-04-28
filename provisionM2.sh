@@ -30,7 +30,7 @@ sudo su postgres << EOF
  echo "standby_mode = 'on'" >> 9.5/main/recovery.conf
  echo "primary_conninfo = 'host=m1 port=5432 user=repslave1 password=repslave1'" >> 9.5/main/recovery.conf
  echo "archive_cleanup_command = 'pg_archivecleanup /var/lib/postgresql/9.5/main/walFilesMaster %r'" >> 9.5/main/recovery.conf
- echo "trigger_file=recover.now" >> 9.5/main/recovery.conf
+ echo "trigger_file = 'recover.now'" >> 9.5/main/recovery.conf
  sed -i "s/IP/m1/" 9.5/main/walSender.sh
 pg_ctlcluster 9.5 main stop
 EOF

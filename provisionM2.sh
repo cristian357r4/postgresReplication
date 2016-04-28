@@ -25,12 +25,16 @@ sudo su postgres << EOF
  cat .ssh/id_rsa.pub > .ssh/authorized_keys
  chmod 600 .ssh/id_rs*
  ssh-keyscan m1 >> .ssh/known_hosts
- touch 9.5/main/recovery.conf
  
- echo "standby_mode = 'on'" >> 9.5/main/recovery.conf
- echo "primary_conninfo = 'host=m1 port=5432 user=repslave1 password=repslave1'" >> 9.5/main/recovery.conf
- echo "archive_cleanup_command = 'pg_archivecleanup /var/lib/postgresql/9.5/main/walFilesMaster %r'" >> 9.5/main/recovery.conf
- echo "trigger_file = 'recover.now'" >> 9.5/main/recovery.conf
+ touch recovery.conf
+ echo "standby_mode = 'on'" >> recovery.conf
+ echo "primary_conninfo = 'host=m1 port=5432 user=repslave1 password=repslave1'" >> recovery.conf
+ echo "archive_cleanup_command = 'pg_archivecleanup /var/lib/postgresql/9.5/main/walFilesMaster %r'" >> recovery.conf
+ echo "trigger_file = 'recover.now'" >> recovery.conf
  sed -i "s/IP/m1/" 9.5/main/walSender.sh
-pg_ctlcluster 9.5 main stop
+ cp 9.5/main/walSender.sh .
+ pg_ctlcluster 9.5 main stop
+ rm -rf 9.5/main/*
+ mv recovery.conf 9.5/main
+ mv walSender.sh 9.5/main
 EOF

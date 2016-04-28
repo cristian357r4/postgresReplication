@@ -10,7 +10,7 @@ sudo sed  -i "s/.*archive_timeout.*=.*/archive_timeout = 1200/" /etc/postgresql/
 sudo sed  -i "s/.*max_wal_senders.*=.*/max_wal_senders = 2/" /etc/postgresql/9.5/main/postgresql.conf
 sudo sed  -i "s/.*wal_sender_delay.*=.*/wal_sender_delay = 200ms/" /etc/postgresql/9.5/main/postgresql.conf
 sudo sed  -i "s/.*wal_keep_segments.*=.*/wal_keep_segments = 100/" /etc/postgresql/9.5/main/postgresql.conf
-sudo sed  -i "s/.*#hot_standby.*=.*/hot_standby = on/" /etc/postgresql/9.5/main/postgresql.conf
+sudo sed  -i "s/.*#hot_standby =.*/hot_standby = on/" /etc/postgresql/9.5/main/postgresql.conf
 ########### Certificados de Confianza ######################3
 ip_dhcp='172.28.128.3'
 echo "$ip_dhcp $(hostname) " >> /etc/hosts

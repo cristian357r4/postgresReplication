@@ -3,7 +3,7 @@ database=replicada
 clave=replicada
 cd ~
 sudo cp /vagrant/after* ~vagrant/
-sudo chmod +x ~~vagrant/after*
+sudo chmod +x ~vagrant/after*
 echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > pgdg.list
 sudo mv pgdg.list /etc/apt/sources.list.d
 sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc |apt-key add -

@@ -11,6 +11,7 @@ Vagrant.configure(2) do |config|
     
     m1.vm.box = "ubuntu/trusty64"
     m1.vm.network "private_network", ip: "172.28.128.3"
+    m1.vm.network :forwarded_port, host: 5555, guest: 5432
     m1.vm.hostname = "m1"
     m1.vm.provision :shell, path: "createDB.sh"
     m1.vm.provision :shell, path: "provisionM1.sh"
@@ -25,6 +26,7 @@ Vagrant.configure(2) do |config|
     
     m2.vm.box = "ubuntu/trusty64"
     m2.vm.network "private_network", ip: "172.28.128.4"
+    m2.vm.network :forwarded_port, host: 5556, guest: 5432
     m2.vm.hostname ="m2"
     m2.vm.provision :shell, path: "createDB.sh"
     m2.vm.provision :shell, path: "provisionM2.sh"

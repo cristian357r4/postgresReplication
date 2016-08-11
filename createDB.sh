@@ -4,9 +4,9 @@ clave=replicada
 cd ~
 sudo cp /vagrant/after* ~vagrant/
 sudo chmod +x ~vagrant/after*
-echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > pgdg.list
+echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > pgdg.list
 sudo mv pgdg.list /etc/apt/sources.list.d
-sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc |apt-key add -
+sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc |sudo apt-key add -
 sudo apt-get update
 sudo apt-get install -y postgresql-9.5
 sudo su postgres << EOF
